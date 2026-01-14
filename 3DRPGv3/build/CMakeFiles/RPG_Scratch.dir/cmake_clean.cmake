@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/RPG_Scratch.dir/libs/glad/src/glad.c.obj"
+  "CMakeFiles/RPG_Scratch.dir/libs/glad/src/glad.c.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/backends/imgui_impl_glfw.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/backends/imgui_impl_glfw.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/backends/imgui_impl_opengl3.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/backends/imgui_impl_opengl3.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui_demo.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui_demo.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui_draw.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui_draw.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui_tables.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui_tables.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui_widgets.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/libs/imgui/imgui_widgets.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/src/Game.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/src/Game.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/src/Player.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/src/Player.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/src/Renderer.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/src/Renderer.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/src/Shader.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/src/Shader.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/src/Texture.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/src/Texture.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/src/World.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/src/World.cpp.obj.d"
+  "CMakeFiles/RPG_Scratch.dir/src/main.cpp.obj"
+  "CMakeFiles/RPG_Scratch.dir/src/main.cpp.obj.d"
+  "RPG_Scratch.exe"
+  "RPG_Scratch.exe.manifest"
+  "RPG_Scratch.pdb"
+  "libRPG_Scratch.dll.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C CXX)
+  include(CMakeFiles/RPG_Scratch.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

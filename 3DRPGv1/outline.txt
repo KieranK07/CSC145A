@@ -1,0 +1,5 @@
+main app
+must be able to import 3d models and manipulate them in a 3d enviroment
+must be able to move around the camera in the 3d enviroment
+
+will be coded in c++

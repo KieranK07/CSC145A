@@ -1,0 +1,1 @@
+-IC:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glad/include -IC:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glfw/include -IC:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm -IC:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/stb -IC:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/imgui -IC:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/imgui/backends

@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\RPG_Scratch.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\RPG_Scratch.dir/objects.a @CMakeFiles\RPG_Scratch.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\RPG_Scratch.dir/objects.a -Wl,--no-whole-archive -o RPG_Scratch.exe -Wl,--out-implib,libRPG_Scratch.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\RPG_Scratch.dir\linkLibs.rsp
