@@ -1,6 +1,7 @@
 #pragma once
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <memory>
 #include "Renderer.h"
 #include "World.h"
 #include "Shader.h"
@@ -18,12 +19,14 @@ public:
 
 private:
     GLFWwindow* window;
-    Renderer* renderer;
-    World* world;
-    Shader* shader;
+    std::unique_ptr<Renderer> renderer;
+    std::unique_ptr<World> world;
+    std::unique_ptr<Shader> shader;
     bool isPaused;
     bool escapePressed;
-    bool mousePressed;
+    bool wasPausedLastFrame;
+    int mouseDropFrames;
+    glm::vec3 pausedVelocity;
     
     void HandlePauseInput();
     void HandlePauseMenuInput();

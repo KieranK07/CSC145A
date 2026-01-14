@@ -51,20 +51,24 @@ void Player::ProcessInput(GLFWwindow* window, float dt) {
 
     glm::vec3 direction = glm::vec3(0.0f);
 
+    // Always check input, but only apply movement when grounded
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) direction += forward;
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) direction -= forward;
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) direction -= right;
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) direction += right;
 
-    // Apply movement logic (only affect X/Z velocity)
+    // Apply movement logic
     if (glm::length(direction) > 0) {
+        // New input detected - update velocity
         direction = glm::normalize(direction);
         Velocity.x = direction.x * speed;
         Velocity.z = direction.z * speed;
-    } else {
+    } else if (IsGrounded) {
+        // No input and grounded - stop
         Velocity.x = 0;
         Velocity.z = 0;
     }
+    // If in air with no input, velocity stays the same (momentum preserved)
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS && IsGrounded) {
         Velocity.y = 5.0f;
@@ -73,8 +77,8 @@ void Player::ProcessInput(GLFWwindow* window, float dt) {
 }
 
 void Player::Update(float dt) {
-    // Gravity
-    Velocity.y -= 9.8f * dt;
+    // Gravity - set to 15 for balanced falling speed
+    Velocity.y -= 15.0f * dt;
 
     // Apply Velocity
     Position += Velocity * dt;

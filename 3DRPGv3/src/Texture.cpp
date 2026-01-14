@@ -9,7 +9,9 @@ Texture::Texture(const char* filePath, bool flipVertically) : Width(0), Height(0
     unsigned char* data = stbi_load(filePath, &Width, &Height, &Channels, 0);
     
     if (!data) {
-        std::cout << "Failed to load texture: " << filePath << std::endl;
+        std::cout << "ERROR: Failed to load texture at " << filePath << std::endl;
+        std::cout << "stbi_failure_reason: " << stbi_failure_reason() << std::endl;
+        std::cout << "Using white fallback texture" << std::endl;
         // Create a simple white texture as fallback
         Width = Height = 1;
         Channels = 3;

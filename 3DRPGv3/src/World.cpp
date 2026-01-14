@@ -1,20 +1,16 @@
 #include "World.h"
 
 World::World() {
-    player = new Player();
+    player = std::make_unique<Player>();
     // Create a platform at (2, 0.5, -2) with size (3, 1, 3)
     platform = { glm::vec3(2.0f, 0.5f, -2.0f), glm::vec3(3.0f, 1.0f, 3.0f) };
     
     // Load textures (will use white fallback if files don't exist)
-    groundTexture = new Texture("../assets/textures/ground.png");
-    platformTexture = new Texture("../assets/textures/box.png");
+    groundTexture = std::make_unique<Texture>("../assets/textures/ground.png");
+    platformTexture = std::make_unique<Texture>("../assets/textures/box.png");
 }
 
-World::~World() {
-    delete player;
-    delete groundTexture;
-    delete platformTexture;
-}
+World::~World() = default;
 
 bool World::CheckCollision(Player* p, AABB box) {
     // Capsule collision with AABB
@@ -45,7 +41,7 @@ void World::Update(float dt) {
     
     for (int iter = 0; iter < COLLISION_ITERATIONS; ++iter) {
         // Check collision with platform
-        if (CheckCollision(player, platform)) {
+        if (CheckCollision(player.get(), platform)) {
             // Find the closest point on the AABB to the player's position
             float closestX = glm::clamp(player->Position.x, 
                 platform.position.x - platform.size.x/2, 
@@ -97,9 +93,9 @@ void World::Draw(Renderer& renderer, Shader& shader) {
     // Player is now invisible (it's a first-person character)
     // Only draw environment objects
     
-    // Draw Platform with texture
-    renderer.DrawCubeTextured(shader, platform.position, platform.size, *platformTexture);
+    // Draw Platform with texture tiled 2x for better appearance
+    renderer.DrawCubeTextured(shader, platform.position, platform.size, *platformTexture, 2.0f);
 
-    // Draw Floor with texture (repeat the texture for large floor)
-    renderer.DrawCubeTextured(shader, glm::vec3(0,-0.5,0), glm::vec3(20, 1, 20), *groundTexture);
+    // Draw Floor with texture tiled 10 times for better coverage on large surface
+    renderer.DrawCubeTextured(shader, glm::vec3(0,-0.5,0), glm::vec3(20, 1, 20), *groundTexture, 10.0f);
 }

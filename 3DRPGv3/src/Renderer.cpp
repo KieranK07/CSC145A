@@ -79,6 +79,10 @@ void Renderer::DrawCube(Shader& shader, glm::vec3 position, glm::vec3 size, glm:
 }
 
 void Renderer::DrawCubeTextured(Shader& shader, glm::vec3 position, glm::vec3 size, Texture& texture) {
+    DrawCubeTextured(shader, position, size, texture, 1.0f);
+}
+
+void Renderer::DrawCubeTextured(Shader& shader, glm::vec3 position, glm::vec3 size, Texture& texture, float tilingFactor) {
     shader.Use();
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, position);
@@ -87,6 +91,7 @@ void Renderer::DrawCubeTextured(Shader& shader, glm::vec3 position, glm::vec3 si
     shader.SetMat4("model", model);
     shader.SetInt("useTexture", 1);
     shader.SetInt("textureSampler", 0);
+    shader.SetFloat("tilingFactor", tilingFactor);
     
     texture.Bind(0);
 

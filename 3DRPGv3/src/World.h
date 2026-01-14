@@ -3,15 +3,16 @@
 #include "Player.h"
 #include "Texture.h"
 #include <vector>
+#include <memory>
 
 struct AABB { glm::vec3 position; glm::vec3 size; };
 
 class World {
 public:
-    Player* player;
+    std::unique_ptr<Player> player;
     AABB platform;
-    Texture* groundTexture;
-    Texture* platformTexture;
+    std::unique_ptr<Texture> groundTexture;
+    std::unique_ptr<Texture> platformTexture;
 
     World();
     ~World();

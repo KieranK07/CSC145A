@@ -1876,10 +1876,15 @@ CMakeFiles/RPG_Scratch.dir/src/Game.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/_timeval.h \
   C:/msys64/ucrt64/include/assert.h \
   C:/msys64/ucrt64/include/c++/14.2.0/array \
+  C:/msys64/ucrt64/include/c++/14.2.0/backward/auto_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/backward/binders.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bit \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/align.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/alloc_traits.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/allocator.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_base.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.h \
@@ -1924,6 +1929,9 @@ CMakeFiles/RPG_Scratch.dir/src/Game.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/c++/14.2.0/bits/range_access.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/refwrap.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_atomic.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_base.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/specfun.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/std_abs.h \
@@ -1936,12 +1944,15 @@ CMakeFiles/RPG_Scratch.dir/src/Game.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_iterator_base_funcs.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_iterator_base_types.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_pair.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_tempbuf.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/streambuf.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/uses_allocator.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/uses_allocator_args.h \
@@ -1969,6 +1980,7 @@ CMakeFiles/RPG_Scratch.dir/src/Game.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/c++/14.2.0/ext/aligned_buffer.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/alloc_traits.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/atomicity.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/ext/concurrence.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/type_traits.h \
@@ -1980,8 +1992,11 @@ CMakeFiles/RPG_Scratch.dir/src/Game.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/c++/14.2.0/iostream \
   C:/msys64/ucrt64/include/c++/14.2.0/istream \
   C:/msys64/ucrt64/include/c++/14.2.0/limits \
+  C:/msys64/ucrt64/include/c++/14.2.0/memory \
   C:/msys64/ucrt64/include/c++/14.2.0/new \
   C:/msys64/ucrt64/include/c++/14.2.0/ostream \
+  C:/msys64/ucrt64/include/c++/14.2.0/pstl/execution_defs.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h \
   C:/msys64/ucrt64/include/c++/14.2.0/pstl/pstl_config.h \
   C:/msys64/ucrt64/include/c++/14.2.0/sstream \
   C:/msys64/ucrt64/include/c++/14.2.0/stdexcept \
@@ -3400,10 +3415,15 @@ CMakeFiles/RPG_Scratch.dir/src/World.cpp.obj: C:/Users/kierankelly/Documents/CSC
   C:/msys64/ucrt64/include/_timeval.h \
   C:/msys64/ucrt64/include/assert.h \
   C:/msys64/ucrt64/include/c++/14.2.0/array \
+  C:/msys64/ucrt64/include/c++/14.2.0/backward/auto_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/backward/binders.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bit \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/align.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/alloc_traits.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/allocator.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_base.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.h \
@@ -3448,6 +3468,9 @@ CMakeFiles/RPG_Scratch.dir/src/World.cpp.obj: C:/Users/kierankelly/Documents/CSC
   C:/msys64/ucrt64/include/c++/14.2.0/bits/range_access.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/refwrap.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_atomic.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_base.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/specfun.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/std_abs.h \
@@ -3460,12 +3483,15 @@ CMakeFiles/RPG_Scratch.dir/src/World.cpp.obj: C:/Users/kierankelly/Documents/CSC
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_iterator_base_funcs.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_iterator_base_types.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_pair.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_tempbuf.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/streambuf.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/uses_allocator.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/uses_allocator_args.h \
@@ -3493,6 +3519,7 @@ CMakeFiles/RPG_Scratch.dir/src/World.cpp.obj: C:/Users/kierankelly/Documents/CSC
   C:/msys64/ucrt64/include/c++/14.2.0/ext/aligned_buffer.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/alloc_traits.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/atomicity.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/ext/concurrence.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/type_traits.h \
@@ -3504,8 +3531,11 @@ CMakeFiles/RPG_Scratch.dir/src/World.cpp.obj: C:/Users/kierankelly/Documents/CSC
   C:/msys64/ucrt64/include/c++/14.2.0/iostream \
   C:/msys64/ucrt64/include/c++/14.2.0/istream \
   C:/msys64/ucrt64/include/c++/14.2.0/limits \
+  C:/msys64/ucrt64/include/c++/14.2.0/memory \
   C:/msys64/ucrt64/include/c++/14.2.0/new \
   C:/msys64/ucrt64/include/c++/14.2.0/ostream \
+  C:/msys64/ucrt64/include/c++/14.2.0/pstl/execution_defs.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h \
   C:/msys64/ucrt64/include/c++/14.2.0/pstl/pstl_config.h \
   C:/msys64/ucrt64/include/c++/14.2.0/sstream \
   C:/msys64/ucrt64/include/c++/14.2.0/stdexcept \
@@ -3749,10 +3779,15 @@ CMakeFiles/RPG_Scratch.dir/src/main.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/_timeval.h \
   C:/msys64/ucrt64/include/assert.h \
   C:/msys64/ucrt64/include/c++/14.2.0/array \
+  C:/msys64/ucrt64/include/c++/14.2.0/backward/auto_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/backward/binders.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bit \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/align.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/alloc_traits.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/allocator.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_base.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_string.h \
@@ -3797,6 +3832,9 @@ CMakeFiles/RPG_Scratch.dir/src/main.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/c++/14.2.0/bits/range_access.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/refwrap.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/requires_hosted.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_atomic.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_base.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/specfun.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/std_abs.h \
@@ -3809,12 +3847,15 @@ CMakeFiles/RPG_Scratch.dir/src/main.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_iterator_base_funcs.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_iterator_base_types.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_pair.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_tempbuf.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/streambuf.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/bits/unique_ptr.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/unordered_map.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/uses_allocator.h \
   C:/msys64/ucrt64/include/c++/14.2.0/bits/uses_allocator_args.h \
@@ -3842,6 +3883,7 @@ CMakeFiles/RPG_Scratch.dir/src/main.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/c++/14.2.0/ext/aligned_buffer.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/alloc_traits.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/atomicity.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/ext/concurrence.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/14.2.0/ext/type_traits.h \
@@ -3853,8 +3895,11 @@ CMakeFiles/RPG_Scratch.dir/src/main.cpp.obj: C:/Users/kierankelly/Documents/CSC1
   C:/msys64/ucrt64/include/c++/14.2.0/iostream \
   C:/msys64/ucrt64/include/c++/14.2.0/istream \
   C:/msys64/ucrt64/include/c++/14.2.0/limits \
+  C:/msys64/ucrt64/include/c++/14.2.0/memory \
   C:/msys64/ucrt64/include/c++/14.2.0/new \
   C:/msys64/ucrt64/include/c++/14.2.0/ostream \
+  C:/msys64/ucrt64/include/c++/14.2.0/pstl/execution_defs.h \
+  C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h \
   C:/msys64/ucrt64/include/c++/14.2.0/pstl/pstl_config.h \
   C:/msys64/ucrt64/include/c++/14.2.0/sstream \
   C:/msys64/ucrt64/include/c++/14.2.0/stdexcept \
@@ -4078,11 +4123,11 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/keylockerintrin.h:
 
 C:/msys64/ucrt64/include/crtdefs.h:
 
+C:/msys64/ucrt64/include/c++/14.2.0/bits/charconv.h:
+
 C:/msys64/ucrt64/include/dde.h:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/mat4x4.hpp:
-
-C:/msys64/ucrt64/include/c++/14.2.0/bits/charconv.h:
 
 C:/msys64/ucrt64/include/c++/14.2.0/debug/debug.h:
 
@@ -4240,8 +4285,6 @@ C:/msys64/ucrt64/include/processenv.h:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/matrix.hpp:
 
-C:/msys64/ucrt64/include/c++/14.2.0/bits/enable_special_members.h:
-
 C:/msys64/ucrt64/include/processthreadsapi.h:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/src/Game.cpp:
@@ -4347,6 +4390,8 @@ C:/msys64/ucrt64/include/sec_api/stralign_s.h:
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/ext/vector_uint4_sized.hpp:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/detail/type_mat4x4.hpp:
+
+C:/msys64/ucrt64/include/c++/14.2.0/backward/auto_ptr.h:
 
 C:/msys64/ucrt64/include/securityappcontainer.h:
 
@@ -4572,11 +4617,11 @@ C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/ext/matrix_float2x3.
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/avx512bwintrin.h:
 
+C:/msys64/ucrt64/include/c++/14.2.0/bits/cxxabi_forced.h:
+
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/avx512cdintrin.h:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/exponential.hpp:
-
-C:/msys64/ucrt64/include/c++/14.2.0/bits/cxxabi_forced.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/avx512dqintrin.h:
 
@@ -4675,6 +4720,8 @@ C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/ext/quaternion_trigo
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/fxsrintrin.h:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/ext/vector_uint2.hpp:
+
+C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_atomic.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/hresetintrin.h:
 
@@ -4898,8 +4945,6 @@ C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/imgui/imgui_demo.cpp:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/imgui/imgui_draw.cpp:
 
-C:/msys64/ucrt64/include/c++/14.2.0/bits/cxxabi_init_exception.h:
-
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/ext/vector_double1.hpp:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/imgui/imstb_truetype.h:
@@ -5058,6 +5103,8 @@ C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/gtc/quaternion.inl:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/ext/vector_uint4.hpp:
 
+C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_raw_storage_iter.h:
+
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/gtc/constants.inl:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/integer.hpp:
@@ -5086,9 +5133,17 @@ C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/simd/platform.h:
 
 C:/msys64/ucrt64/include/_mingw_stat64.h:
 
+C:/msys64/ucrt64/include/c++/14.2.0/bits/align.h:
+
 C:/msys64/ucrt64/include/c++/14.2.0/bits/alloc_traits.h:
 
+C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h:
+
 C:/msys64/ucrt64/include/c++/14.2.0/bits/allocator.h:
+
+C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_base.h:
+
+C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_lockfree_defines.h:
 
 C:/msys64/ucrt64/include/c++/14.2.0/bits/basic_ios.h:
 
@@ -5098,6 +5153,10 @@ C:/msys64/ucrt64/include/c++/14.2.0/bits/uses_allocator.h:
 
 C:/msys64/ucrt64/include/c++/14.2.0/bits/codecvt.h:
 
+C:/msys64/ucrt64/include/c++/14.2.0/bits/cxxabi_init_exception.h:
+
+C:/msys64/ucrt64/include/c++/14.2.0/bits/enable_special_members.h:
+
 C:/msys64/ucrt64/include/c++/14.2.0/bits/erase_if.h:
 
 C:/msys64/ucrt64/include/c++/14.2.0/bits/exception.h:
@@ -5105,6 +5164,8 @@ C:/msys64/ucrt64/include/c++/14.2.0/bits/exception.h:
 C:/msys64/ucrt64/include/c++/14.2.0/bits/fstream.tcc:
 
 C:/msys64/ucrt64/include/wchar.h:
+
+C:/msys64/ucrt64/include/c++/14.2.0/memory:
 
 C:/msys64/ucrt64/include/c++/14.2.0/bits/functional_hash.h:
 
@@ -5138,6 +5199,10 @@ C:/msys64/ucrt64/include/c++/14.2.0/bits/ostream.tcc:
 
 C:/msys64/ucrt64/include/c++/14.2.0/bits/refwrap.h:
 
+C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr.h:
+
+C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_base.h:
+
 C:/msys64/ucrt64/include/c++/14.2.0/tuple:
 
 C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc:
@@ -5146,7 +5211,11 @@ C:/msys64/ucrt64/include/c++/14.2.0/bits/std_function.h:
 
 C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_bvector.h:
 
+C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_tempbuf.h:
+
 C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_uninitialized.h:
+
+C:/msys64/ucrt64/include/c++/14.2.0/bits/unique_ptr.h:
 
 C:/msys64/ucrt64/include/c++/14.2.0/bits/unordered_map.h:
 
@@ -5168,11 +5237,17 @@ C:/msys64/ucrt64/include/c++/14.2.0/exception:
 
 C:/msys64/ucrt64/include/c++/14.2.0/ext/aligned_buffer.h:
 
+C:/msys64/ucrt64/include/c++/14.2.0/ext/concurrence.h:
+
 C:/msys64/ucrt64/include/c++/14.2.0/initializer_list:
 
 C:/msys64/ucrt64/include/c++/14.2.0/ios:
 
 C:/msys64/ucrt64/include/c++/14.2.0/istream:
+
+C:/msys64/ucrt64/include/c++/14.2.0/pstl/execution_defs.h:
+
+C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h:
 
 C:/Users/kierankelly/Documents/CSC145A/3DRPGv3/libs/glm/glm/ext/quaternion_float_precision.hpp:
 

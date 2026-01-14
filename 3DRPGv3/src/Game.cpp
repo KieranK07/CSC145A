@@ -1,6 +1,5 @@
 #include "Game.h"
 #include <glm/gtc/matrix_transform.hpp>
-#include <iostream>
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
@@ -9,7 +8,7 @@
 int Game::WIDTH = 1920;
 int Game::HEIGHT = 1080;
 
-Game::Game() : window(nullptr), renderer(nullptr), world(nullptr), shader(nullptr), isPaused(false), escapePressed(false), mousePressed(false) {}
+Game::Game() : window(nullptr), renderer(nullptr), world(nullptr), shader(nullptr), isPaused(false), escapePressed(false), wasPausedLastFrame(false), mouseDropFrames(0) {}
 
 Game::~Game() { 
     ImGui_ImplOpenGL3_Shutdown();
@@ -44,11 +43,11 @@ bool Game::Init() {
 
     glEnable(GL_DEPTH_TEST); 
 
-    renderer = new Renderer();
-    world = new World();
-    
+    renderer = std::make_unique<Renderer>();
+    world = std::make_unique<World>();
+
     // Updated path with "../" to look up one folder level
-    shader = new Shader("../assets/shaders/basic.vert", "../assets/shaders/basic.frag");
+    shader = std::make_unique<Shader>("../assets/shaders/basic.vert", "../assets/shaders/basic.frag");
 
     // Setup ImGui
     IMGUI_CHECKVERSION();
@@ -74,12 +73,7 @@ bool Game::Init() {
 
 void Game::Run() {
     float lastFrame = 0.0f;
-    
-    // Mouse state variables
-    bool firstMouse = true;
-    bool wasPaused = false;
-    float lastX = WIDTH / 2.0f;
-    float lastY = HEIGHT / 2.0f;
+    mouseDropFrames = 1;
 
     while (!glfwWindowShouldClose(window)) {
         float currentFrame = (float)glfwGetTime();
@@ -89,30 +83,37 @@ void Game::Run() {
         // Handle pause input
         HandlePauseInput();
         
-        // Reset mouse tracking when resuming from pause
-        if (wasPaused && !isPaused) {
-            firstMouse = true;
+        // Handle pause state changes - store/restore velocity to prevent jolt
+        if (!wasPausedLastFrame && isPaused) {
+            pausedVelocity = world->player->Velocity;
+            world->player->Velocity = glm::vec3(0.0f);
+            mouseDropFrames = 1;
+        } else if (wasPausedLastFrame && !isPaused) {
+            world->player->Velocity = pausedVelocity;
+            glfwSetCursorPos(window, WIDTH / 2.0, HEIGHT / 2.0);
+            mouseDropFrames = 1; // drop one frame to absorb cursor warp
         }
-        wasPaused = isPaused;
+        wasPausedLastFrame = isPaused;
+
+        // While paused, swallow mouse deltas so none accumulate
+        if (isPaused) {
+            mouseDropFrames = 1;
+        }
         
         // Only process game input and updates if not paused
         if (!isPaused) {
-            // --- MOUSE INPUT HANDLING ---
             double xpos, ypos;
             glfwGetCursorPos(window, &xpos, &ypos);
 
-            if (firstMouse) {
-                lastX = (float)xpos;
-                lastY = (float)ypos;
-                firstMouse = false;
+            if (mouseDropFrames > 0) {
+                glfwSetCursorPos(window, WIDTH / 2.0, HEIGHT / 2.0);
+                --mouseDropFrames;
+            } else {
+                float xoffset = static_cast<float>(xpos - (WIDTH / 2.0));
+                float yoffset = static_cast<float>((HEIGHT / 2.0) - ypos);
+                world->player->ProcessMouseMovement(xoffset, yoffset);
+                glfwSetCursorPos(window, WIDTH / 2.0, HEIGHT / 2.0);
             }
-
-            float xoffset = (float)xpos - lastX;
-            float yoffset = lastY - (float)ypos;
-            lastX = (float)xpos;
-            lastY = (float)ypos;
-
-            world->player->ProcessMouseMovement(xoffset, yoffset);
             // -----------------------------
 
             world->player->ProcessInput(window, dt);
