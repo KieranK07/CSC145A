@@ -64,24 +64,6 @@ Renderer::Renderer() {
     glEnableVertexAttribArray(1);
 }
 
-void Renderer::DrawCube(Shader& shader, glm::vec3 position, glm::vec3 size, glm::vec3 color) {
-    shader.Use();
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, position);
-    model = glm::scale(model, size);
-    
-    shader.SetMat4("model", model);
-    shader.SetVec3("objectColor", color);
-    shader.SetInt("useTexture", 0);
-
-    glBindVertexArray(cubeVAO);
-    glDrawArrays(GL_TRIANGLES, 0, 36);
-}
-
-void Renderer::DrawCubeTextured(Shader& shader, glm::vec3 position, glm::vec3 size, Texture& texture) {
-    DrawCubeTextured(shader, position, size, texture, 1.0f);
-}
-
 void Renderer::DrawCubeTextured(Shader& shader, glm::vec3 position, glm::vec3 size, Texture& texture, float tilingFactor) {
     shader.Use();
     glm::mat4 model = glm::mat4(1.0f);

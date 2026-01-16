@@ -37,6 +37,23 @@ Texture::Texture(const char* filePath, bool flipVertically) : Width(0), Height(0
     }
 }
 
+// Constructor for embedded texture data (from GLB)
+Texture::Texture(const unsigned char* data, int width, int height, int channels) 
+    : Width(width), Height(height), Channels(channels) {
+    
+    glGenTextures(1, &ID);
+    glBindTexture(GL_TEXTURE_2D, ID);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    GLenum format = (Channels == 4) ? GL_RGBA : GL_RGB;
+    glTexImage2D(GL_TEXTURE_2D, 0, format, Width, Height, 0, format, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+}
+
 Texture::~Texture() {
     glDeleteTextures(1, &ID);
 }

@@ -4,11 +4,11 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
-// Initialize static members
+// initialize
 int Game::WIDTH = 1920;
 int Game::HEIGHT = 1080;
 
-Game::Game() : window(nullptr), renderer(nullptr), world(nullptr), shader(nullptr), isPaused(false), escapePressed(false), wasPausedLastFrame(false), mouseDropFrames(0) {}
+Game::Game() : window(nullptr), renderer(nullptr), world(nullptr), shader(nullptr), isPaused(false), escapePressed(false), equalPressed(false) {}
 
 Game::~Game() { 
     ImGui_ImplOpenGL3_Shutdown();
@@ -23,20 +23,19 @@ bool Game::Init() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    // Get primary monitor and its video mode for fullscreen
+    // pull monitor info for fullscreen
     GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
     const GLFWvidmode* mode = glfwGetVideoMode(primaryMonitor);
     
-    // Set game dimensions to match monitor resolution
     WIDTH = mode->width;
     HEIGHT = mode->height;
 
-    // Create fullscreen window
+    // create the fullscreen window
     window = glfwCreateWindow(WIDTH, HEIGHT, "RPG Scratch", primaryMonitor, NULL);
     if (!window) return false;
     glfwMakeContextCurrent(window);
 
-    // Capture the mouse cursor (hide it)
+    // capture cursor
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) return false;
@@ -46,22 +45,22 @@ bool Game::Init() {
     renderer = std::make_unique<Renderer>();
     world = std::make_unique<World>();
 
-    // Updated path with "../" to look up one folder level
+    // make da shader
     shader = std::make_unique<Shader>("../assets/shaders/basic.vert", "../assets/shaders/basic.frag");
 
-    // Setup ImGui
+    // setup imgui for text
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     
-    // Scale font size based on screen height for proper scaling
-    float fontScale = HEIGHT / 1080.0f; // Base scale on 1080p
+    // scale font to window size
+    float fontScale = HEIGHT / 1080.0f; // base scale 1080p
     if (fontScale < 1.0f) fontScale = 1.0f;
     io.FontGlobalScale = fontScale;
     
     ImGui::StyleColorsDark();
     
-    // Scale UI elements
+    // scale the ui
     ImGuiStyle& style = ImGui::GetStyle();
     style.ScaleAllSizes(fontScale);
     
@@ -71,49 +70,44 @@ bool Game::Init() {
     return true;
 }
 
+// main game loop
 void Game::Run() {
     float lastFrame = 0.0f;
-    mouseDropFrames = 1;
+    bool firstMouse = true;
+    float lastX = WIDTH / 2.0f;
+    float lastY = HEIGHT / 2.0f;
 
     while (!glfwWindowShouldClose(window)) {
         float currentFrame = (float)glfwGetTime();
         float dt = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
-        // Handle pause input
+        // handle pause input
         HandlePauseInput();
         
-        // Handle pause state changes - store/restore velocity to prevent jolt
-        if (!wasPausedLastFrame && isPaused) {
-            pausedVelocity = world->player->Velocity;
-            world->player->Velocity = glm::vec3(0.0f);
-            mouseDropFrames = 1;
-        } else if (wasPausedLastFrame && !isPaused) {
-            world->player->Velocity = pausedVelocity;
-            glfwSetCursorPos(window, WIDTH / 2.0, HEIGHT / 2.0);
-            mouseDropFrames = 1; // drop one frame to absorb cursor warp
-        }
-        wasPausedLastFrame = isPaused;
-
-        // While paused, swallow mouse deltas so none accumulate
-        if (isPaused) {
-            mouseDropFrames = 1;
+        // handle flying mode toggle
+        int equalState = glfwGetKey(window, GLFW_KEY_EQUAL);
+        if (equalState == GLFW_PRESS && !equalPressed) {
+            world->player->IsFlying = !world->player->IsFlying;
+            equalPressed = true;
+        } else if (equalState == GLFW_RELEASE) {
+            equalPressed = false;
         }
         
-        // Only process game input and updates if not paused
+        // make sure mouse only affects camera when the game is not paused
         if (!isPaused) {
             double xpos, ypos;
             glfwGetCursorPos(window, &xpos, &ypos);
-
-            if (mouseDropFrames > 0) {
-                glfwSetCursorPos(window, WIDTH / 2.0, HEIGHT / 2.0);
-                --mouseDropFrames;
-            } else {
-                float xoffset = static_cast<float>(xpos - (WIDTH / 2.0));
-                float yoffset = static_cast<float>((HEIGHT / 2.0) - ypos);
-                world->player->ProcessMouseMovement(xoffset, yoffset);
-                glfwSetCursorPos(window, WIDTH / 2.0, HEIGHT / 2.0);
+            if (firstMouse) {
+                lastX = static_cast<float>(xpos);
+                lastY = static_cast<float>(ypos);
+                firstMouse = false;
             }
+            float xoffset = static_cast<float>(xpos) - lastX;
+            float yoffset = lastY - static_cast<float>(ypos);
+            lastX = static_cast<float>(xpos);
+            lastY = static_cast<float>(ypos);
+            world->player->ProcessMouseMovement(xoffset, yoffset);
             // -----------------------------
 
             world->player->ProcessInput(window, dt);
@@ -123,12 +117,9 @@ void Game::Run() {
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // First-person camera positioned at player's eye level
-        glm::vec3 eyeOffset = glm::vec3(0.0f, 1.5f, 0.0f); // Eye height above player feet
+        // fps camera
+        glm::vec3 eyeOffset = glm::vec3(0.0f, 1.5f, 0.0f); // camera height
         glm::vec3 cameraPos = world->player->Position + eyeOffset;
-        
-        // Check if camera is colliding with objects, adjust if needed
-        cameraPos = GetCollisionFreeCameraPos(cameraPos);
         
         glm::mat4 view = glm::lookAt(
             cameraPos, 
@@ -144,7 +135,7 @@ void Game::Run() {
 
         world->Draw(*renderer, *shader);
 
-        // Render ImGui
+        // render imgui
         RenderImGui();
 
         glfwSwapBuffers(window);
@@ -157,7 +148,7 @@ void Game::RenderImGui() {
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    // Display FPS counter (scale with window size)
+    // display fps
     float scale = HEIGHT / 1080.0f;
     if (scale < 1.0f) scale = 1.0f;
     
@@ -167,9 +158,10 @@ void Game::RenderImGui() {
     ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
     ImGui::Text("Player Position: (%.2f, %.2f, %.2f)", world->player->Position.x, world->player->Position.y, world->player->Position.z);
     ImGui::Text("Grounded: %s", world->player->IsGrounded ? "Yes" : "No");
+    ImGui::Text("Flying: %s (Press = to toggle)", world->player->IsFlying ? "Yes" : "No");
     ImGui::End();
 
-    // Pause menu
+    // pause menu
     if (isPaused) {
         DrawPauseMenuImGui();
     }
@@ -178,8 +170,8 @@ void Game::RenderImGui() {
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
+// draw the pause menu
 void Game::DrawPauseMenuImGui() {
-    // Scale everything based on screen height
     float scale = HEIGHT / 1080.0f;
     if (scale < 1.0f) scale = 1.0f;
     
@@ -196,7 +188,7 @@ void Game::DrawPauseMenuImGui() {
     
     ImGui::SetCursorPosY(50 * scale);
     
-    // Center "Game is Paused" text
+    // create centered title
     const char* pauseText = "Game is Paused";
     float textWidth = ImGui::CalcTextSize(pauseText).x;
     ImGui::SetCursorPosX((windowWidth - textWidth) / 2.0f);
@@ -206,7 +198,7 @@ void Game::DrawPauseMenuImGui() {
     ImGui::Spacing();
     ImGui::Spacing();
     
-    // Center Resume button
+    // center Resume button
     ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2.0f);
     if (ImGui::Button("Resume Game", ImVec2(buttonWidth, buttonHeight))) {
         isPaused = false;
@@ -215,8 +207,8 @@ void Game::DrawPauseMenuImGui() {
     
     ImGui::Spacing();
     ImGui::Spacing();
-    
-    // Center Quit button
+
+    // center Quit button
     ImGui::SetCursorPosX((windowWidth - buttonWidth) / 2.0f);
     if (ImGui::Button("Quit Game", ImVec2(buttonWidth, buttonHeight))) {
         glfwSetWindowShouldClose(window, true);
@@ -226,7 +218,7 @@ void Game::DrawPauseMenuImGui() {
     ImGui::Spacing();
     ImGui::Spacing();
     
-    // Center hint text
+    // center hint text
     const char* hintText = "Press ESC to toggle pause";
     float hintWidth = ImGui::CalcTextSize(hintText).x;
     ImGui::SetCursorPosX((windowWidth - hintWidth) / 2.0f);
@@ -238,15 +230,15 @@ void Game::DrawPauseMenuImGui() {
 void Game::HandlePauseInput() {
     int escapeState = glfwGetKey(window, GLFW_KEY_ESCAPE);
     
-    // Toggle pause on Escape press (detect state change, not continuous press)
+    // toggle esc key
     if (escapeState == GLFW_PRESS && !escapePressed) {
         isPaused = !isPaused;
         
         if (isPaused) {
-            // Unlock cursor when paused
+            // unlock cursor when paused
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         } else {
-            // Lock cursor when unpaused
+            // lock cursor when unpaused
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         }
         
@@ -256,65 +248,3 @@ void Game::HandlePauseInput() {
     }
 }
 
-void Game::HandlePauseMenuInput() {
-    // ImGui handles this automatically
-}
-
-bool Game::IsCameraPositionValid(glm::vec3 cameraPos, float minDistance) {
-    float capsuleRadius = 0.4f;
-    
-    // Check distance from player position (don't clip through player capsule)
-    float distToPlayer = glm::distance(cameraPos, world->player->Position);
-    if (distToPlayer < minDistance + capsuleRadius) {
-        return false;
-    }
-    
-    // Check floor collision (y > 0 + radius buffer)
-    if (cameraPos.y < 0.2f) {
-        return false;
-    }
-    
-    // Check collision with platform
-    AABB platform = world->platform;
-    float dx = glm::max(fabsf(cameraPos.x - platform.position.x) - platform.size.x / 2.0f - minDistance, 0.0f);
-    float dy = glm::max(fabsf(cameraPos.y - platform.position.y) - platform.size.y / 2.0f - minDistance, 0.0f);
-    float dz = glm::max(fabsf(cameraPos.z - platform.position.z) - platform.size.z / 2.0f - minDistance, 0.0f);
-    float dist = sqrtf(dx * dx + dy * dy + dz * dz);
-    
-    if (dist < minDistance) {
-        return false;
-    }
-    
-    return true;
-}
-
-glm::vec3 Game::GetCollisionFreeCameraPos(glm::vec3 targetPos) {
-    // If target position is valid, use it
-    if (IsCameraPositionValid(targetPos)) {
-        return targetPos;
-    }
-    
-    // Otherwise, gradually move camera towards player until valid position found
-    glm::vec3 playerToCamera = targetPos - world->player->Position;
-    glm::vec3 direction = glm::normalize(playerToCamera);
-    float maxDistance = glm::length(playerToCamera);
-    
-    // Binary search for valid position
-    float minDist = 0.5f;
-    float maxDist = maxDistance;
-    glm::vec3 bestPosition = world->player->Position + direction * minDist;
-    
-    for (int i = 0; i < 10; ++i) {
-        float midDist = (minDist + maxDist) / 2.0f;
-        glm::vec3 testPos = world->player->Position + direction * midDist;
-        
-        if (IsCameraPositionValid(testPos)) {
-            bestPosition = testPos;
-            minDist = midDist;
-        } else {
-            maxDist = midDist;
-        }
-    }
-    
-    return bestPosition;
-}

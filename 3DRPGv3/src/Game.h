@@ -8,7 +8,7 @@
 
 class Game {
 public:
-    // Screen size (will be set to monitor resolution)
+    // screen size
     static int WIDTH;
     static int HEIGHT;
 
@@ -24,14 +24,9 @@ private:
     std::unique_ptr<Shader> shader;
     bool isPaused;
     bool escapePressed;
-    bool wasPausedLastFrame;
-    int mouseDropFrames;
-    glm::vec3 pausedVelocity;
+    bool equalPressed;
     
     void HandlePauseInput();
-    void HandlePauseMenuInput();
     void DrawPauseMenuImGui();
     void RenderImGui();
-    glm::vec3 GetCollisionFreeCameraPos(glm::vec3 targetPos);
-    bool IsCameraPositionValid(glm::vec3 cameraPos, float minDistance = 0.3f);
 };

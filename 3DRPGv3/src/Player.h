@@ -5,13 +5,15 @@
 
 class Player {
 public:
-    // Transform Variables
+    // variables for transformation and physics
     glm::vec3 Position;
     glm::vec3 Velocity;
     glm::vec3 Size;
+    glm::vec3 HalfExtents;
     bool IsGrounded;
+    bool IsFlying;
 
-    // Camera/Rotation Variables
+    // cam and rot variables
     glm::vec3 Front;
     glm::vec3 Right;
     glm::vec3 Up;
